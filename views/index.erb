@@ -1,13 +1,45 @@
 <html>
-  <head></head>
+  <head>
+		<style>
+      body {background: lightyellow;}
+        #back {background: violet; 
+            padding: 30px;
+            width: 400px;
+            height: 450px;
+            border: 5px grey solid;
+            box-shadow: 0 0 50px black;
+            margin: 5% auto;
+          }        
+    </style>
+  </head>
   <body>
-    <p>
-			The SECRET NUMBER is ...
+    <div align='center' id="back">
+    <p>You have only 5 attempts</p><br><br>
+    <h4>Attempt #<%= attempt %></h4><br>
+    <h3>The SECRET NUMBER is ... <%= number %></h3>
  		</p>
  		<form>
   		<input type='text' name='guess' autofocus/>
   		<input type='submit' value='Guess!' />
 		</form>
-		<h4> <%= message %> </h4>				
+    <% if  message.include? 'BINGO' %>
+        <style>
+            #back { background: lightgreen; }
+        </style> 
+    <% elsif message.include? 'generated'%>
+        <style>
+            #back { background: violet; }
+        </style>      
+		<% elsif message.include? 'Way too' %>
+				<style>
+      			#back { background: darkred; }
+    		</style>
+    <% elsif message.include? 'Too' %>
+    		<style>
+      			#back { background: lightcoral; }
+    		</style>
+    <% end %>
+		<h4> <%= message %> </h4>	
+    </div>		
   </body>
 </html>
