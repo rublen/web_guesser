@@ -38,8 +38,8 @@ class Game
 		6 - @counter
 	end
 
-	def secret
-		@secret_number.secret
-	end
+	# def secret
+	# 	@secret_number.secret
+	# end
 
 end

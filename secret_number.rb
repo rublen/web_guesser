@@ -24,8 +24,8 @@ def check_guess(guess)
 		@value == guess
 	end
 
-	def secret
-		@value
-	end
+	# def secret
+	# 	@value
+	# end
 	
 end
