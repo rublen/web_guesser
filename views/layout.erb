@@ -1,0 +1,55 @@
+<html>
+  <head>
+		<style>
+      body {background: lightyellow;}
+        #back {background: violet; 
+            padding: 30px;
+            width: 420px;
+            height: 450px;
+            border: 5px grey solid;
+            box-shadow: 0 0 50px black;
+            margin: 5% auto;
+          }        
+    </style>
+  </head>
+  <body>
+      <div align='right'>
+          <form id='language' action='/lang'>
+          </form>
+              <select name='lang' form='language'>
+                  <option value='ukr'>ukr</option>
+                  <option value='ru'>ru</option>
+                  <option value='eng'>eng</option>
+              </select>
+      </div>
+      
+      <div align='center' id="back">
+          
+          <%= yield %>
+          
+          <form>
+            <input type='text' name='guess' autofocus/>
+            <input type='submit' value='Guess!' />
+          </form>
+          <% case check_guess %>
+          <% when 0 %> 
+              <style>
+                  #back { background: lightgreen; }
+              </style> 
+          <% when (1..2) %> 
+              <style>
+                  #back { background: lightcoral; }
+              </style>
+          <% when (3..4) %> 
+              <style>
+                  #back { background: darkred; }
+              </style>
+          <% else %>
+              <style>
+                  #back { background: violet; }
+              </style> 
+          <% end %>
+          <h4> <%= message %> </h4> 
+
+  </body>
+</html>
