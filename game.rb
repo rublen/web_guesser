@@ -3,30 +3,35 @@ require_relative 'secret_number.rb'
 class Game
 	LANGUAGES = ['eng', 'ukr', 'ru']
 
-	attr_reader :message, :lang
+	attr_reader :message
+	attr_accessor :lang
 
 	def initialize
 		@secret_number = SecretNumber.new
-		@guess = 0
+		@guess = '0'
 		@message = ''
 		@counter = 5
-		@lang = LANGUAGES[1]
+		@lang = LANGUAGES[0]
 	end
 
 	def check_guess
 		@secret_number.check @guess
 	end
 
-	def start(guess, lang)
-		# @lang = lang
-		check_lang
+	def set_lang(lang)
+		@lang = lang if lang
+	end
+
+	def start(guess)
+		check_lang	
 		@guess = guess
-		if check_guess			
-			@message = MESSAGES[check_guess]
+		message_case = check_guess
+		if message_case			
+			@message = MESSAGES[message_case]
 			@counter -= 1
 			reset if over?
 		else
-			@message = WRONG_INPUT_MESSAGE
+			@message = WRONG_INPUT_MESSAGE if @counter != 5
 		end
 	end
 
@@ -42,11 +47,7 @@ class Game
 	private
 
 		def check_lang
-			case @lang
-				when 'eng' then require_relative 'eng.rb'
-				when 'ukr' then require_relative 'ukr.rb'
-				when 'ru'  then require_relative 'ru.rb'
-			end
+			require_relative @lang+'.rb'
 		end
 
 		def over?

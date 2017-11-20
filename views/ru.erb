@@ -2,3 +2,24 @@
 <p>У Вас только 5 попыток</p><br>
 <h4>Попытка №<%= attempt %></h4><br>
 <h3>СЕКРЕТНОЕ ЧИСЛО ... <%= secret%></h3>  
+
+<form>
+    <input type='text' name='guess' autofocus/>
+  	<input type='submit' value='Guess!' />
+</form>
+
+<% case check_guess %>
+<% when 0 %> 
+    <style>
+        #back { background: green; }
+    </style> 
+<% when (1..2) %> 
+    <style>
+         #back { background: lightcoral; }
+    </style>
+<% when (3..4) %> 
+     <style>
+          #back { background: darkred; }
+     </style>          
+<% end %>
+<h4> <%= message %> </h4> 
