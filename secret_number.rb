@@ -1,5 +1,5 @@
 class SecretNumber
-	N = 100
+	N = 101
 	DEVIATION = 5
 		
 	def initialize
@@ -7,7 +7,8 @@ class SecretNumber
 	end
 
 	def check(guess)
-		return false unless valid? guess
+		return 5 unless valid? guess
+		return nil if guess.to_s.empty?
 		guess = guess.to_i
 		diff = @value - DEVIATION
 		case guess
@@ -31,7 +32,7 @@ class SecretNumber
 	private
 
 		def valid?(guess)
-			if /^[0-9]{1,3}$/ === guess
+			if /^[0-9]{0,3}$/ === guess
 			 	guess.to_i <= 100
 			else
 			 	false

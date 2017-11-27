@@ -9,10 +9,6 @@
 </form>
 
 <% case check_guess %>
-<% when 0 %> 
-    <style>
-        #back { background: green; }
-    </style> 
 <% when (1..2) %> 
     <style>
          #back { background: lightcoral; }
@@ -20,6 +16,12 @@
 <% when (3..4) %> 
      <style>
           #back { background: darkred; }
-     </style>          
+     </style>
+<% end %>
+
+<% if message.include?('!') %>
+    <style>
+        #back { background: lightgreen; }
+    </style>
 <% end %>
 <h4> <%= message %> </h4> 
