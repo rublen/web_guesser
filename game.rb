@@ -15,7 +15,7 @@ class Game
 		require_relative "#{@lang}.rb"
 	end
 
-	def check_guess
+	def message_case
 		@secret_number.check @guess
 	end
 
@@ -23,17 +23,14 @@ class Game
 		if lang
 			@lang = lang
 			require_relative "#{@lang}.rb"
-			@message = MESSAGES[check_guess] if check_guess
 		end
 	end
 
 	def start(guess)		
 		@guess = guess
-		message_case = check_guess
-		if message_case
-			@message = MESSAGES[message_case]
-			@counter -= 1
-		end
+		# message_case = check_guess
+		@message = MESSAGES[message_case]
+		@counter -= 1
 		reset if over?
 	end
 

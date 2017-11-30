@@ -19,9 +19,9 @@
      </style>
 <% end %>
 
-<% if message.include?('!') %>
+<% if @message.include?('!') %>
     <style>
-        #back { background: lightgreen; }
+        #back { background: #9ACD32; }
     </style>
 <% end %>
-<h4> <%= message %> </h4> 
+<h4> <%= @message %> </h4> 
