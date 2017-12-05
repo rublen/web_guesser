@@ -3,12 +3,12 @@
 <h4>Спроба №<%= attempt %></h4><br>
 <h3>СЕКРЕТНЕ ЧИСЛО ... <%= secret%></h3>  
 
-<form>
+<form action='/' method='get'>
     <input type='text' name='guess' autofocus/>
   	<input type='submit' value='Guess!' />
 </form>
 
-<% case check_guess %>
+<% case message_case %>
 <% when (1..2) %> 
     <style>
          #back { background: lightcoral; }

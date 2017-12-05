@@ -10,5 +10,4 @@ MESSAGES = [
 						"Too LOW",
 						"Way too LOW",
 						"Way too HIGH"
-						# "WRONG INPUT.<br> Enter the number from 0 to 100"
 					]

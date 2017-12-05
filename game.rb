@@ -3,7 +3,6 @@ require_relative 'secret_number.rb'
 class Game
 	LANGUAGES = ['eng', 'ukr', 'ru']
 
-	attr_reader :message
 	attr_accessor :lang
 
 	def initialize
@@ -28,7 +27,6 @@ class Game
 
 	def start(guess)		
 		@guess = guess
-		# message_case = check_guess
 		@message = MESSAGES[message_case]
 		@counter -= 1
 		reset if over?
@@ -42,7 +40,7 @@ class Game
 		@secret_number.secret
 	end
 
-	def getmessage
+	def message
 		@message
 	end
 	

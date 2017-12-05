@@ -7,8 +7,6 @@ class SecretNumber
 	end
 
 	def check(guess)
-		# return 5 unless valid? guess
-		# return nil if guess.to_s.empty?
 		guess = guess.to_i
 		diff = @value - DEVIATION
 		case guess
@@ -27,16 +25,5 @@ class SecretNumber
 	def secret
 		@value
 	end
-
-
-	# private
-
-	# 	def valid?(guess)
-	# 		if /^[0-9]{0,3}$/ === guess
-	# 		 	guess.to_i <= 100
-	# 		else
-	# 		 	false
-	# 		end
-	# 	end
 
 end
