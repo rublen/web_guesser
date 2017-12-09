@@ -16,7 +16,7 @@ class InputValidator
 
 		def validate
 			if @value.to_s.empty?
-				@message = EMPTY_INPUT_MESSAGE
+				@message = EMPTY_INPUT_MESSAGE 
 			elsif /^[0-9]{1,2}$/ === @value or @value == '100'
 			 	@message = nil
 			else

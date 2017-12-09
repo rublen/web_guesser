@@ -11,10 +11,10 @@ class SecretNumber
 		diff = @value - DEVIATION
 		case guess
 			when @value then 0 # "BINGO!"
-			when @value+1...diff+DEVIATION*2+1 then 1 #"Too HIGH!"			
-			when diff...@value then 2 # "Too LOW!"
-			when 0...diff then 3 # "Way too LOW!"	
-		else 4 # "Way too HIGH!"
+			when @value+1...diff+DEVIATION*2+1 then 1 # "Too HIGH"
+			when diff...@value then 2 # "Too LOW"
+			when 0...diff then 3 # "Way too LOW"
+		else 4 # "Way too HIGH"
 		end
 	end
 

@@ -3,6 +3,14 @@ require 'sinatra/reloader'
 require_relative 'game'
 require_relative 'input_validator'
 
+EMPTY_INPUT_MESSAGE = { eng: "<br>You need to enter the number",
+                        ukr: "<br>Введіть число",
+                        ru: "<br>Введите число" }
+
+WRONG_INPUT_MESSAGE = { eng: "WRONG INPUT<br> Enter the number from 0 to 100",
+                        ukr: "Введено неправильне значення<br> Введіть число від 0 до 100",
+                        ru: "Введено неправильное значенние<br> Введите число от 0 до 100" }
+
 game = Game.new
 
 post '/' do
@@ -11,18 +19,13 @@ post '/' do
 end
 
 get '/' do
-  @guess = params[:guess]
-  validator = InputValidator.new(@guess)
+  validator = InputValidator.new(params[:guess])
   if validator.valid?
-    game.start(@guess)
+    game.start(params[:guess])
     @message = game.message
   else
-    @message = validator.message
+    @message = validator.message[game.lang.to_sym]
   end
 
-  erb game.lang.to_sym, locals: {
-    attempt: game.attempt_number,
-    secret: game.secret,
-    message_case: game.message_case
-  }
+  erb game.lang.to_sym, locals: { attempt: game.attempt_number, secret: game.secret, message_case: game.message_case }
 end

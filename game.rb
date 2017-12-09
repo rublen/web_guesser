@@ -3,6 +3,14 @@ require_relative 'secret_number.rb'
 class Game
 	LANGUAGES = ['eng', 'ukr', 'ru']
 
+  MESSAGES = { eng: ['BINGO!', 'Too HIGH', 'Too LOW', 'Way too LOW', 'Way too HIGH'],
+  						ukr: ["В яблучко!", "Забагато", "Замало", "Занадто мало", "Занадто багато"],
+  						ru: ["В яблочко!", "Много", "Мало", "Слишком мало", "Слишком много"] }
+
+  START_MESSAGE = { eng: "<br><br>New Secret Number has been generated<br>You have got new 5 attempts",
+                    ukr: "<br><br>Було згенеровано НОВЕ СЕКРЕТНЕ ЧИСЛО<br>У вас знову є 5 спроб",
+                  	ru: "<br><br>Cгeнерировано НОВОЕ СЕКРЕТНОЕ ЧИСЛО<br>У Вас снова есть 5 попыток" }
+
 	attr_accessor :lang
 
 	def initialize
@@ -11,23 +19,19 @@ class Game
 		@message = ''
 		@counter = 5
 		@lang = LANGUAGES[0]
-		require_relative "#{@lang}.rb"
 	end
 
 	def message_case
 		@secret_number.check @guess
 	end
 
-	def set_lang(lang)
-		if lang
-			@lang = lang
-			require_relative "#{@lang}.rb"
-		end
+	def set_lang(lang)		
+    @lang = lang if lang
 	end
 
 	def start(guess)		
 		@guess = guess
-		@message = MESSAGES[message_case]
+    @message = MESSAGES[@lang.to_sym][message_case]
 		@counter -= 1
 		reset if over?
 	end
@@ -54,7 +58,7 @@ class Game
 		def reset
 			@secret_number = SecretNumber.new
 			@guess = 0
-			@message += START_MESSAGE
+			@message += START_MESSAGE[@lang.to_sym]
 			@counter = 5
 		end
 
