@@ -1,39 +1,31 @@
 <html>
   <head>
-		<style>
+    <style>
       body {background: lightyellow;}
-        #back {background:  #FFDAB9; 
-            padding: 30px;
-            width: 420px;
-            height: 450px;
-            border: 5px grey solid;
-            box-shadow: 0 0 50px black;
-            margin: 5% auto;
-          }        
+        #back {background:  #FFDAB9;
+          padding: 30px;
+          width: 420px;
+          height: 450px;
+          border: 5px grey solid;
+          box-shadow: 0 0 50px black;
+          margin: 5% auto;
+        }
     </style>
   </head>
-  <body>
-      <div align='right'>
-        <form id='language' method = "post" action='/'>
-                  <input type="radio" name="lang" value='eng'>eng 
-                  <input type="radio" name="lang" value='ukr'>ukr
-                  <input type="radio" name="lang" value='ru'>ru
-                  <input type="submit" value="Submit">
-        </form>
-          <!-- <form id='language' action='/lang' method="post">
-          </form>
-              <select name='lang' form='language'>
-                  <option value='ukr'>ukr</option>
-                  <option value='ru'>ru</option>
-                  <option value='eng'>eng</option>
-              </select> -->
 
-      </div>
-      
-      <div align='center' id="back">
-          
-          <%= yield %>          
-          
-      </div>
+  <body>
+    <div align='right'>
+      <form id='language' method = "post" action='/'>
+        <input type="radio" name="lang" value='eng'>eng
+        <input type="radio" name="lang" value='ukr'>ukr
+        <input type="radio" name="lang" value='ru'>ru
+        <input type="submit" value="Submit">
+      </form>          
+    </div>
+
+    <div align='center' id="back">          
+      <%= yield %>          
+    </div>
+
   </body>
 </html>

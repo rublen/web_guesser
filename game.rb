@@ -4,15 +4,15 @@ class Game
   LANGUAGES = %w[eng ukr ru].freeze
 
   MESSAGES = {
-    eng: ['BINGO!', 'Too HIGH', 'Too LOW', 'Way too LOW', 'Way too HIGH'],
-    ukr: ['В яблучко!', 'Забагато', 'Замало', 'Занадто мало', 'Занадто багато'],
-    ru: ['В яблочко!', 'Много', 'Мало', 'Слишком мало', 'Слишком много']
+    eng: ['BINGO!', 'Too HIGH.', 'Too LOW.', 'Way too LOW.', 'Way too HIGH.'],
+    ukr: ['В яблучко!', 'Багато.', 'Мало.', 'Занадто мало.', 'Занадто багато.'],
+    ru: ['В яблочко!', 'Много.', 'Мало.', 'Слишком мало.', 'Слишком много.']
   }.freeze
 
   START_MESSAGE = {
-    eng: '<br><br>New Secret Number has been generated<br>You have got new 5 attempts',
-    ukr: '<br><br>Було згенеровано НОВЕ СЕКРЕТНЕ ЧИСЛО<br>У вас знову є 5 спроб',
-    ru: '<br><br>Cгeнерировано НОВОЕ СЕКРЕТНОЕ ЧИСЛО<br>У Вас снова есть 5 попыток'
+    eng: '  Game is over<br><br>New Secret Number has been generated<br>You have got new 5 attempts',
+    ukr: '  Гру закінченно<br><br>Було згенеровано НОВЕ СЕКРЕТНЕ ЧИСЛО<br>У вас знову є 5 спроб',
+    ru: '  Игра законченна<br><br>Cгeнерировано НОВОЕ СЕКРЕТНОЕ ЧИСЛО<br>У Вас снова есть 5 попыток'
   }.freeze
 
   attr_accessor :lang
@@ -43,10 +43,6 @@ class Game
 
   def attempt_number
     6 - @counter
-  end
-
-  def secret
-    @secret_number.secret
   end
 
   private
