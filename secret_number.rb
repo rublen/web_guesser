@@ -1,29 +1,25 @@
 class SecretNumber
-	N = 101
-	DEVIATION = 5
-		
-	def initialize
-		@value = rand(N)
-	end
+  N = 101
+  DEVIATION = 5
 
-	def check(guess)
-		guess = guess.to_i
-		diff = @value - DEVIATION
-		case guess
-			when @value then 0 # "BINGO!"
-			when @value+1...diff+DEVIATION*2+1 then 1 # "Too HIGH"
-			when diff...@value then 2 # "Too LOW"
-			when 0...diff then 3 # "Way too LOW"
-		else 4 # "Way too HIGH"
-		end
-	end
+  attr_reader :secret
 
-	def equal?(guess)
-		@value == guess.to_i
-	end
+  def initialize
+    @secret = rand(N)
+  end
 
-	def secret
-		@value
-	end
+  def check(guess)
+    guess = guess.to_i
+    case guess
+    when @secret then 0 # "BINGO!"
+    when @secret + 1..@secret + DEVIATION then 1 # "Too HIGH"
+    when @secret - DEVIATION...@secret then 2 # "Too LOW"
+    when 0...@secret - DEVIATION then 3 # "Way too LOW"
+    else 4 # "Way too HIGH"
+    end
+  end
 
+  def equal?(guess)
+    @secret == guess.to_i
+  end
 end

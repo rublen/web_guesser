@@ -1,26 +1,25 @@
 class InputValidator
-	def initialize(value)
-		@value = value
-	end
+  attr_reader :message
 
-	def valid?
-		validate
-		@message.nil?
-	end
+  def initialize(value)
+    @value = value
+  end
 
-	def message
-		@message
-	end
+  def valid?
+    validate
+    @message.nil?
+  end
 
-	private
+  private
 
-		def validate
-			if @value.to_s.empty?
-				@message = EMPTY_INPUT_MESSAGE 
-			elsif /^[0-9]{1,2}$/ === @value or @value == '100'
-			 	@message = nil
-			else
-				@message = WRONG_INPUT_MESSAGE
-			end				
-		end
+  def validate
+    @message =
+      if @value.to_s.empty?
+        EMPTY_INPUT_MESSAGE
+      elsif /^[0-9]{1,2}$/ === @value or @value == '100'
+        nil
+      else
+        WRONG_INPUT_MESSAGE
+      end
+  end
 end
